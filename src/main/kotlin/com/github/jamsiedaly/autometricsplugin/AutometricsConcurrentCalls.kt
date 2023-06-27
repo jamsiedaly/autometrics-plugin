@@ -16,7 +16,7 @@ class AutometricsConcurrentCalls : DumbAwareAction() {
         val classPackage = getPackage(e.dataContext)
 
         val query = concurrentCallsQuery("function", methodName)
-        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function calls per minute")
+        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Concurrent function calls")
         BrowserUtil.browse(url)
     }
 

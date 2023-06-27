@@ -10,17 +10,19 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <actions>
-        <action class="com.github.jamsiedaly.autometricsplugin.AutometricsRequestRate" id="actions.requestRate" text="Request Rate">
+        <group
+                id="org.intellij.sdk.action.GroupedActions"
+                text="Autometrics"
+                popup="true">
             <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
-        </action>
-        <action class="com.github.jamsiedaly.autometricsplugin.AutometricsErrorRatio" id="actions.errorRatio" text="Error Ratio">
-            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
-        </action>
-        <action class="com.github.jamsiedaly.autometricsplugin.AutometricsLatency" id="actions.latency" text="Latency">
-            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
-        </action>
-        <action class="com.github.jamsiedaly.autometricsplugin.AutometricsConcurrentCalls" id="actions.concurrentCalls" text="Concurrent Calls">
-            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
-        </action>
+            <action class="com.github.jamsiedaly.autometricsplugin.AutometricsRequestRate" id="actions.requestRate" text="Request Rate">
+            </action>
+            <action class="com.github.jamsiedaly.autometricsplugin.AutometricsErrorRatio" id="actions.errorRatio" text="Error Ratio">
+            </action>
+            <action class="com.github.jamsiedaly.autometricsplugin.AutometricsLatency" id="actions.latency" text="Latency">
+            </action>
+            <action class="com.github.jamsiedaly.autometricsplugin.AutometricsConcurrentCalls" id="actions.concurrentCalls" text="Concurrent Calls">
+            </action>
+        </group>
     </actions>
 </idea-plugin>

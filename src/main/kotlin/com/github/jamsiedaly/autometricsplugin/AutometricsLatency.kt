@@ -16,7 +16,7 @@ class AutometricsLatency : DumbAwareAction() {
         val classPackage = getPackage(e.dataContext)
 
         val query = latencyQuery("function", methodName)
-        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function calls per minute")
+        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function latency")
         BrowserUtil.browse(url)
     }
 

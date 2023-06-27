@@ -16,7 +16,7 @@ class AutometricsErrorRatio : DumbAwareAction() {
         val classPackage = getPackage(e.dataContext)
 
         val query = errorRatioQuery("function", methodName)
-        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function calls per minute")
+        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function error rate")
         BrowserUtil.browse(url)
     }
 
