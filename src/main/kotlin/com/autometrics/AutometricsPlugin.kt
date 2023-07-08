@@ -1,4 +1,4 @@
-package com.github.jamsiedaly.autometricsplugin
+package com.autometrics
 
 import com.intellij.DynamicBundle
 import com.intellij.openapi.actionSystem.DataContext

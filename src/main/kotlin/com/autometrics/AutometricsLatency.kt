@@ -1,13 +1,13 @@
-package com.github.jamsiedaly.autometricsplugin
+package com.autometrics
 
-import com.github.jamsiedaly.autometricsplugin.AutometricsPlugin.getPackage
-import com.github.jamsiedaly.autometricsplugin.AutometricsPlugin.makePrometheusUrl
+import com.autometrics.AutometricsPlugin.getPackage
+import com.autometrics.AutometricsPlugin.makePrometheusUrl
 import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.project.DumbAwareAction
 
-class AutometricsConcurrentCalls : DumbAwareAction() {
+class AutometricsLatency : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
         val ediTorRequiredData = e.getRequiredData(CommonDataKeys.EDITOR)
@@ -15,8 +15,8 @@ class AutometricsConcurrentCalls : DumbAwareAction() {
         val methodName = caretModel.currentCaret.selectedText
         val classPackage = getPackage(e.dataContext)
 
-        val query = concurrentCallsQuery("function", methodName)
-        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Concurrent function calls")
+        val query = latencyQuery("function", methodName)
+        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function latency")
         BrowserUtil.browse(url)
     }
 
@@ -29,8 +29,12 @@ class AutometricsConcurrentCalls : DumbAwareAction() {
         }
     }
 
-    fun concurrentCallsQuery(labelKey: String, labelValue: String?): String {
-        return "sum by (function, module, commit, version) (function_calls_concurrent{$labelKey=\"$labelValue\"} $BUILD_INFO)"
+    fun latencyQuery(labelKey: String, labelValue: String?): String {
+        val latency = "sum by (le, function, module, commit, version) (rate(function_calls_duration_bucket{$labelKey=\"$labelValue\"}[5m]) $BUILD_INFO)"
+        return """
+        label_replace(histogram_quantile(0.99, $latency), "percentile_latency", "99", "", "")
+        or
+        label_replace(histogram_quantile(0.95, $latency), "percentile_latency", "95", "", "")
+    """.trimIndent()
     }
-
 }
