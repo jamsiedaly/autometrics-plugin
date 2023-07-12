@@ -9,7 +9,7 @@ import com.intellij.util.PsiErrorElementUtil
 import dev.autometrics.plugin.services.MyProjectService
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
-class MyPluginTest : BasePlatformTestCase() {
+class AutometricsIntellijTest : BasePlatformTestCase() {
 
     fun testXMLFile() {
         val psiFile = myFixture.configureByText(XmlFileType.INSTANCE, "<foo>bar</foo>")
