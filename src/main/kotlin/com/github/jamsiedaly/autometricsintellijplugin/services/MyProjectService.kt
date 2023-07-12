@@ -1,9 +1,9 @@
-package com.github.jamsiedaly.autometricsintellijplugin.services
+package dev.autometrics.plugin.services
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
-import com.github.jamsiedaly.autometricsintellijplugin.MyBundle
+import dev.autometrics.plugin.MyBundle
 
 @Service(Service.Level.PROJECT)
 class MyProjectService(project: Project) {

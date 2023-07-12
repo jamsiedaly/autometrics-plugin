@@ -1,4 +1,4 @@
-package com.github.jamsiedaly.autometricsintellijplugin.toolWindow
+package dev.autometrics.plugin.toolWindow
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -8,8 +8,8 @@ import com.intellij.openapi.wm.ToolWindowFactory
 import com.intellij.ui.components.JBLabel
 import com.intellij.ui.components.JBPanel
 import com.intellij.ui.content.ContentFactory
-import com.github.jamsiedaly.autometricsintellijplugin.MyBundle
-import com.github.jamsiedaly.autometricsintellijplugin.services.MyProjectService
+import dev.autometrics.plugin.MyBundle
+import dev.autometrics.plugin.services.MyProjectService
 import javax.swing.JButton
 
 

@@ -1,4 +1,4 @@
-package com.github.jamsiedaly.autometricsintellijplugin
+package dev.autometrics.plugin
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
