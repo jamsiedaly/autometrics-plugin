@@ -5,14 +5,26 @@
     <vendor>jamsiedaly</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
 
     <resource-bundle>messages.AutometricsIntellij</resource-bundle>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="dev.autometrics.plugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
-
-    <applicationListeners>
-        <listener class="dev.autometrics.plugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
-    </applicationListeners>
+    <actions>
+        <group
+                id="org.intellij.sdk.action.GroupedActions"
+                text="Autometrics"
+                popup="true"
+                icon="Autometrics.svg">
+            >
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="$SearchWeb"/>
+            <action class="dev.autometrics.plugin.AutometricsRequestRate" id="actions.requestRate" text="Request Rate">
+            </action>
+            <action class="dev.autometrics.plugin.AutometricsErrorRatio" id="actions.errorRatio" text="Error Ratio">
+            </action>
+            <action class="dev.autometrics.plugin.AutometricsLatency" id="actions.latency" text="Latency">
+            </action>
+            <action class="dev.autometrics.plugin.AutometricsConcurrentCalls" id="actions.concurrentCalls" text="Concurrent Calls">
+            </action>
+        </group>
+    </actions>
 </idea-plugin>
