@@ -6,27 +6,27 @@ import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.project.DumbAwareAction
+import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiMethod
 
 class AutometricsLatency : DumbAwareAction() {
 
     override fun actionPerformed(e: AnActionEvent) {
-        val ediTorRequiredData = e.getRequiredData(CommonDataKeys.EDITOR)
-        val caretModel = ediTorRequiredData.caretModel
-        val methodName = caretModel.currentCaret.selectedText
-        val classPackage = getPackage(e.dataContext)
+        val psiElement = e.getData(CommonDataKeys.PSI_ELEMENT)
+        if (psiElement is PsiMethod) {
+            val methodName = psiElement.name
+            val className = psiElement.containingClass?.name ?: "ERROR"
+            val classPackage = getPackage(e.dataContext)
 
-        val query = latencyQuery("function", "$classPackage.$methodName")
-        val url = makePrometheusUrl(PROMETHEUS_URL, query, "Function latency")
-        BrowserUtil.browse(url)
+            val query = latencyQuery("function", "$classPackage.$className.$methodName")
+            val url = makePrometheusUrl(query, "Function calls per minute")
+            BrowserUtil.browse(url)
+        }
     }
 
     override fun update(e: AnActionEvent) {
-        val editor = e.getRequiredData(CommonDataKeys.EDITOR)
-        val caretModel = editor.caretModel
-        val selectedText = caretModel.currentCaret.selectedText
-        if (selectedText!!.isEmpty()) {
-            e.presentation.isVisible = false
-        }
+        val psiElement: PsiElement? = e.getData(CommonDataKeys.PSI_ELEMENT)
+        e.presentation.isEnabledAndVisible = psiElement is PsiMethod
     }
 
     fun latencyQuery(labelKey: String, labelValue: String?): String {

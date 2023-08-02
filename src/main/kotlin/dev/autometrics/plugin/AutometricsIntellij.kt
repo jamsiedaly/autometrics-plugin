@@ -12,7 +12,6 @@ import java.nio.charset.StandardCharsets
 private const val BUNDLE = "messages.AutometricsIntellij"
 
 const val BUILD_INFO = "* on (instance, job) group_left(version, commit) last_over_time(build_info[1s])"
-const val PROMETHEUS_URL = "http://localhost:9090"
 
 object AutometricsIntellij : DynamicBundle(BUNDLE) {
 
@@ -33,7 +32,8 @@ object AutometricsIntellij : DynamicBundle(BUNDLE) {
         return packageName
     }
 
-    fun makePrometheusUrl(url: String, query: String?, comment: String?): String {
+    fun makePrometheusUrl(query: String?, comment: String?): String {
+        val url = ConfigurationState.getInstance().prometheusUrl
         val stringBuilder = StringBuilder(url)
         if (!url.endsWith("/")) {
             stringBuilder.append('/')
