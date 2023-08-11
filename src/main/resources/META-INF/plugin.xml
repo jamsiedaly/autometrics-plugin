@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>dev.autometrics.plugin</id>
-    <name>autometrics-intellij-plugin</name>
+    <name>autometrics</name>
     <vendor>jamsiedaly</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,6 +9,21 @@
     <depends>com.intellij.modules.java</depends>
 
     <resource-bundle>messages.AutometricsIntellij</resource-bundle>
+
+    <description>
+        <![CDATA[
+        <p>This plugin provides Autometrics integration for IntelliJ IDEA, allowing you to go straight to your functions
+        metrics directly from your code.</p>
+
+        <p>Autometrics is a tool for monitoring the performance of your application. It provides a simple way to track:</p>
+        <ul>
+            <li>Request Rate</li>
+            <li>Error Ratio</li>
+            <li>Latency</li>
+            <li>Concurrent Calls</li>
+        </ul>
+        ]]>
+    </description>
 
     <actions>
         <group

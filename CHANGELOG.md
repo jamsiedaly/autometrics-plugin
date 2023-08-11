@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# autometrics-intellij-plugin Changelog
+# autometrics Changelog
 
 ## [Unreleased]
 ### Added

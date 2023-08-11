@@ -7,11 +7,7 @@ import javax.swing.JComponent
 
 class AutometricsConfigurable : Configurable {
     private var autometricsConfigurationForm: AutometricsConfigurationForm? = null
-    private val settingsState: ConfigurationState
-
-    init {
-        settingsState = getInstance()
-    }
+    private val settingsState: ConfigurationState = getInstance()
 
     override fun getDisplayName(): @Nls(capitalization = Nls.Capitalization.Title) String? {
         return "Autometrics"

@@ -1,1 +1,1 @@
-rootProject.name = "autometrics-intellij-plugin"
+rootProject.name = "autometrics"
