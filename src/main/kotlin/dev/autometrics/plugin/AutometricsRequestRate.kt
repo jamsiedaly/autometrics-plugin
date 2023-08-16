@@ -33,6 +33,6 @@ class AutometricsRequestRate : DumbAwareAction() {
     }
 
     fun requestRateQuery(labelKey: String?, labelValue: String?): String? {
-        return "sum by (function, module, commit, version) (rate({__name__=~\"function_calls(_count)?(_total)?\",$labelKey=\"$labelValue\"}[5m]) $BUILD_INFO)"
+        return "sum by (function, module, commit, version) (rate({__name__=~\"function_calls?(_total)?\",$labelKey=\"$labelValue\"}[5m]) $BUILD_INFO)"
     }
 }
