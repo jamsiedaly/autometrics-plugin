@@ -1,7 +1,7 @@
-# autometrics-intellij-plugin
+# Autometrics Intellij Plugin
 
 This plugin provides Autometrics integration for IntelliJ IDEA, allowing you to go straight to your functions metrics 
-directly from your code.
+directly from your Java or Kotlin code.
 
 Autometrics is a tool for monitoring the performance of your application. It provides a simple way to track:
 
@@ -10,7 +10,11 @@ Autometrics is a tool for monitoring the performance of your application. It pro
 * Latency
 * Concurrent Calls
 
+[Jetbrains Marketplace](https://plugins.jetbrains.com/plugin/22408-autometrics)
+
 ---
+
+
 Plugin based on the [IntelliJ Platform Plugin Template][template].
 
 [template]: https://github.com/JetBrains/intellij-platform-plugin-template
