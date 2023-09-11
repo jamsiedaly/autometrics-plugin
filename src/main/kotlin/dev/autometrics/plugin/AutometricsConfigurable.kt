@@ -9,11 +9,11 @@ class AutometricsConfigurable : Configurable {
     private var autometricsConfigurationForm: AutometricsConfigurationForm? = null
     private val settingsState: ConfigurationState = getInstance()
 
-    override fun getDisplayName(): @Nls(capitalization = Nls.Capitalization.Title) String? {
+    override fun getDisplayName(): @Nls(capitalization = Nls.Capitalization.Title) String {
         return "Autometrics"
     }
 
-    override fun createComponent(): JComponent? {
+    override fun createComponent(): JComponent {
         autometricsConfigurationForm = AutometricsConfigurationForm()
         return autometricsConfigurationForm!!.getMainPanel()
     }

@@ -6,7 +6,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 
 @Storage("settings.xml")
 class ConfigurationState : PersistentStateComponent<ConfigurationState> {
-    var prometheusUrl = "http://localhost:9090"
+    var prometheusUrl = "http://localhost:9090/promotheus"
     override fun getState(): ConfigurationState {
         return this
     }
